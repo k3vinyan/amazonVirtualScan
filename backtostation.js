@@ -14,7 +14,7 @@ $(function(){
   //$("#theInputToTest").trigger(e);
 
    $("#comp-toolbar-panel").before(
-     createButton("virtualScanButton", "click me")
+     optionButton("virtualScanButton", "Virtual Scan", "#FFFFFF", "#00cc00", "5px")
    );
 
 
@@ -39,15 +39,19 @@ $(function(){
     }
 });
 
-  function createButton(id, value, clas){
-      var id = id;
-      var value = value;
-      var string;
-      var clas;
-      var margin = "'margin-right: 5px;'"
-      string = "<input id='" + id + "' type='button' value='" + value +
-      "' style=" + margin +" ></button>";
-      return string;
-    };
+function optionButton(id, value, color, bgColor, padding){
+  var id = id;
+  var value = value;
+  var color = color;
+  var bgColor = bgColor;
+  var padding = padding;
+  var string;
+
+  string = "<input id='" + id + "' type='button' value='" + value +
+    "' style='" +"color: " + color + "; " + "background-color:" + bgColor +
+    "; " + "padding: " + padding + "; border-style: none;'></button>";
+
+    return string;
+};
 
 });
