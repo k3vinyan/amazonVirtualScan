@@ -1,57 +1,64 @@
 $(function(){
 
-  var accept = new Audio();
-  var buzzer = new Audio();
+  var script = document.createElement("SCRIPT");
+  script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
+  script.type = 'text/javascript';
 
-  var tbaArray = [];
+  script.onload = function() {
+       var $ = window.jQuery;
 
-  accept.src = "https://drive.google.com/uc?export=download&id=0B93xTaskz1_WMVhGcGJDR29xR0E";
-  buzzer.src = "https://drive.google.com/uc?export=download&id=0B93xTaskz1_WZ3l3V2NJeDdWMDg";
+       var tbaArray = [];
 
-  var e = jQuery.Event("keypress");
-  e.which = 13; //choose the one you want
-  e.keyCode = 13;
-  //$("#theInputToTest").trigger(e);
+       var e = jQuery.Event("keypress");
+       e.which = 13; //choose the one you want
+       e.keyCode = 13;
+       //$("#theInputToTest").trigger(e);
 
-   $("#comp-toolbar-panel").before(
-     optionButton("virtualScanButton", "Virtual Scan", "#FFFFFF", "#00cc00", "5px")
-   );
+       const element = $("#orderSearchBox");
+       const buttonPlacement = $('#searchByContainer');
+
+        buttonPlacement.before(
+          optionButton("virtualScanButton", "Virtual Scan", "#FFFFFF", "#00cc00", "5px")
+        );
 
 
-   $("#virtualScanButton").click(function(e){
+        $("#virtualScanButton").click(function(e){
 
-     var tbas = prompt("Input TBA(s)", "TBAs");
-     tbaArray = tbas.split(" ");
+          var tbas = prompt("Input TBA(s)", "TBAs");
+          tbaArray = tbas.split(" ");
 
-     item = tbaArray.splice(0, 1);
-     console.log(item)
+          item = tbaArray.splice(0, 1);
+          console.log(item)
 
-     $("#singleScanInput").val(item);
-     $("#singleScanInput").focus();
-   });
+          element.val(item);
+          element.focus();
+        });
 
-   $(document).keypress(function(e) {
-    if(e.which == 13) {
-      if(tbaArray.length >= 0){
-        $("#singleScanInput").val(tbaArray.splice(0, 1));
-        $("#singleScanInput").focus();
-      }
-    }
-});
+        $(document).keypress(function(e) {
+         if(e.which == 13) {
+           if(tbaArray.length >= 0){
+             element.val(tbaArray.splice(0, 1));
+             element.focus();
+           }
+         }
+     });
 
-function optionButton(id, value, color, bgColor, padding){
-  var id = id;
-  var value = value;
-  var color = color;
-  var bgColor = bgColor;
-  var padding = padding;
-  var string;
+     function optionButton(id, value, color, bgColor, padding){
+       var id = id;
+       var value = value;
+       var color = color;
+       var bgColor = bgColor;
+       var padding = padding;
+       var string;
 
-  string = "<input id='" + id + "' type='button' value='" + value +
-    "' style='" +"color: " + color + "; " + "background-color:" + bgColor +
-    "; " + "padding: " + padding + "; border-style: none;'></button>";
+       string = "<input id='" + id + "' type='button' value='" + value +
+         "' style='" +"color: " + color + "; " + "background-color:" + bgColor +
+         "; " + "padding: " + padding + "; border-style: none;'></button>";
 
-    return string;
+         return string;
+   };
+
+
 };
-
+   document.getElementsByTagName("head")[0].appendChild(script);
 });
