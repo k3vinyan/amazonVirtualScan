@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Amazon Receive",
+  "name": "Amazon Flex",
   "version": "1.0",
-  "description": "tool to help search data",
+  "description": "tools with flex",
   "icons": { "16": "icon16.png",
            "48": "icon48.png",
           "128": "icon128.png"
@@ -10,9 +10,9 @@
   "content_scripts": [
     {
       "matches": [
-        "*://www.amazonlogistics.com/comp/packageScan?eventId=ReceiveScan&subMenu=ReceiveScan*"
+        "*//logistics.amazon.com/internal/network/package*"
       ],
-      "js": ["jquery-3.2.1.min.js", "backtostation.js" ]
+      "js": ["jquery-3.2.1.min.js", "receivePage.js" ]
     }
   ],
   "background":
