@@ -10,9 +10,9 @@ $(function(){
        var tbaArray = [];
 
        var e = jQuery.Event("keypress");
-       e.which = 13; //choose the one you want
+       e.which = 13;
        e.keyCode = 13;
-       //$("#theInputToTest").trigger(e);
+       
 
        const element = $("input#rtsPackageSearchInput");
        const buttonPlacement = $('#searchByContainer');
@@ -37,9 +37,10 @@ $(function(){
         $(document).keypress(function(e) {
          if(e.which == 13) {
            if(tbaArray.length >= 0){
-             element.focus();
-             element.val(tbaArray.splice(0, 1));
-             
+             setTimeout(function(){ 
+              element.focus();
+              element.val(tbaArray.splice(0, 1));
+             }, 3000);
            }
          }
      });
