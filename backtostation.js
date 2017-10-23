@@ -14,7 +14,7 @@ $(function(){
        e.keyCode = 13;
        //$("#theInputToTest").trigger(e);
 
-       const element = $("#orderSearchBox");
+       const element = $("input#rtsPackageSearchInput");
        const buttonPlacement = $('#searchByContainer');
 
         buttonPlacement.before(
