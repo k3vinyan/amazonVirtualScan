@@ -37,8 +37,9 @@ $(function(){
         $(document).keypress(function(e) {
          if(e.which == 13) {
            if(tbaArray.length >= 0){
-             element.val(tbaArray.splice(0, 1));
              element.focus();
+             element.val(tbaArray.splice(0, 1));
+             
            }
          }
      });
