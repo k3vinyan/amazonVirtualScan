@@ -40,7 +40,7 @@ $(function(){
              setTimeout(function(){ 
               element.focus();
               element.val(tbaArray.splice(0, 1));
-             }, 2500);
+             }, 2000);
            }
          }
      });
