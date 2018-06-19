@@ -6,13 +6,9 @@ $(function(){
 
   script.onload = function() {
        var $ = window.jQuery;
-
        var tbaArray = [];
-
-       var e = jQuery.Event("keypress");
+       e = jQuery.Event("keypress");
        e.which = 13;
-       e.keyCode = 13;
-       
 
        const element = $("input#rtsPackageSearchInput");
        const buttonPlacement = $('#searchByContainer');
@@ -21,15 +17,10 @@ $(function(){
           optionButton("virtualScanButton", "Virtual Scan", "#FFFFFF", "#00cc00", "5px")
         );
 
-
         $("#virtualScanButton").click(function(e){
-
           var tbas = prompt("Input TBA(s)", "TBAs");
           tbaArray = tbas.split(" ");
-
           item = tbaArray.splice(0, 1);
-          console.log(item)
-
           element.val(item);
           element.focus();
         });
@@ -37,9 +28,13 @@ $(function(){
         $(document).keypress(function(e) {
          if(e.which == 13) {
            if(tbaArray.length >= 0){
-             setTimeout(function(){ 
+             setTimeout(function(){
               element.focus();
               element.val(tbaArray.splice(0, 1));
+              element.keypress(function(){
+                //leave empty
+              }).trigger(e)
+
              }, 2000);
            }
          }
